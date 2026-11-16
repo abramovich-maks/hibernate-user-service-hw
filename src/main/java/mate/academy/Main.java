@@ -34,7 +34,8 @@ public class Main {
         secondCinemaHall.setCapacity(200);
         secondCinemaHall.setDescription("second hall with capacity 200");
 
-        CinemaHallService cinemaHallService = (CinemaHallService) injector.getInstance(CinemaHallService.class);
+        CinemaHallService cinemaHallService = (CinemaHallService)
+                injector.getInstance(CinemaHallService.class);
         cinemaHallService.add(firstCinemaHall);
         cinemaHallService.add(secondCinemaHall);
 
@@ -51,7 +52,8 @@ public class Main {
         yesterdayMovieSession.setMovie(fastAndFurious);
         yesterdayMovieSession.setShowTime(LocalDateTime.now().minusDays(1L));
 
-        MovieSessionService movieSessionService = (MovieSessionService) injector.getInstance(MovieSessionService.class);
+        MovieSessionService movieSessionService = (MovieSessionService)
+                injector.getInstance(MovieSessionService.class);
         movieSessionService.add(tomorrowMovieSession);
         movieSessionService.add(yesterdayMovieSession);
 
@@ -59,7 +61,8 @@ public class Main {
         System.out.println(movieSessionService.findAvailableSessions(
                 fastAndFurious.getId(), LocalDate.now()));
 
-        AuthenticationService authenticationService = (AuthenticationService) injector.getInstance(AuthenticationService.class);
+        AuthenticationService authenticationService = (AuthenticationService)
+                injector.getInstance(AuthenticationService.class);
         try {
             authenticationService.register("bob@gmail.com", "12345");
         } catch (RegistrationException e) {
@@ -74,13 +77,15 @@ public class Main {
         }
 
         try {
-            System.out.println("Login success: " + authenticationService.login("bob@gmail.com", "12345"));
+            System.out.println("Login success: "
+                    + authenticationService.login("bob@gmail.com", "12345"));
         } catch (AuthenticationException e) {
             System.out.println("Login failed: " + e.getMessage());
         }
 
         try {
-            System.out.println("Login success: " + authenticationService.login("bob@gmail.com", "qwerty"));
+            System.out.println("Login success: "
+                    + authenticationService.login("bob@gmail.com", "qwerty"));
         } catch (AuthenticationException e) {
             System.out.println("Login failed: " + e.getMessage());
         }
